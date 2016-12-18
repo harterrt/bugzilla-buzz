@@ -4,8 +4,8 @@ import json
 
 # TODO: harterrt:
 # x Set default date to friday at least one week ago
-# * Add flag to override default active-since date
-# * Figure out how to package the CLI - pinboard links
+# x Add flag to override default active-since date
+# x Figure out how to package the CLI - pinboard links
 # * Add changes/comments overview
 
 API_BASE = "https://bugzilla.mozilla.org/rest/bug?include_fields=id,summary" + \
