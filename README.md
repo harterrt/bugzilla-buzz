@@ -9,7 +9,6 @@ python cli.py next
 ```
 Lists all P1 open bugs assigned to me.
 These are the bugs I plan on working on next week.
-python cli.py done
 
 ```bash
 python cli.py done
