@@ -1,10 +1,20 @@
 # Intro
-Create a smart summary of your work week by analyzing your bug trail.
+This is a quick CLI tool that summarizes my Bugzilla activity for my weekly snippets.
 
 The more useful your bugs are the more you'll want to keep them up to date.
 
 # How to Use
-You can't. I haven't written any code yet.
+```bash
+python cli.py next
+```
+Lists all P1 open bugs assigned to me.
+These are the bugs I plan on working on next week.
+python cli.py done
+
+```bash
+python cli.py done
+```
+Lists all bugs I'm assigned to or CC'd on which were active since last Friday.
 
 # Goals
 * Identify all bugs I'm CC'd, Assigned, or mentioned in. (relevant bugs)
