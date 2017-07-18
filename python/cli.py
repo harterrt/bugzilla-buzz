@@ -5,11 +5,19 @@ import bzapi
 def print_bugs(bugs):
     click.echo(bzapi.summarize_bugs(bugs))
 
+def get_api_key(ctx):
+    key = 'API_KEY'
+    if key in ctx.obj:
+        return ctx.obj[key]
+    else:
+        return ""
+
 @click.group()
 @click.option('--api_key', envvar='BUGZILLA_API_KEY', type=click.File('r'))
 @click.pass_context
 def cli(ctx, api_key):
-    ctx.obj['API_KEY'] = api_key.read()
+    if api_key is not None:
+        ctx.obj['API_KEY'] = api_key.read()
 
 
 @cli.command()
@@ -20,7 +28,7 @@ def recent(ctx, start_date):
     """Gets recently modified bugs relevant to :harter"""
     print_bugs(bzapi.get_recently_active_bugs(
         start_date,
-        api_key = ctx.obj['API_KEY']
+        api_key = get_api_key(ctx)
     ))
 
 
@@ -28,7 +36,7 @@ def recent(ctx, start_date):
 @click.pass_context
 def next(ctx):
     """Gets P1 bugs assigned to :harter, i.e. next week's work"""
-    print_bugs(bzapi.get_current_bugs(api_key=ctx.obj['API_KEY']))
+    print_bugs(bzapi.get_current_bugs(api_key=get_api_key(ctx)))
 
 
 if __name__ == "__main__":
