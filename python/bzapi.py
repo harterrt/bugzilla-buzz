@@ -22,13 +22,18 @@ def summarize_bugs(bugs):
 
     return "\n".join(map(lambda xx: fmt_str.format(**xx), bugs))
 
-def get_current_bugs():
-    return get_bugs("&priority=P1&o1=notequals&v1=RESOLVED&f1=bug_status")
+def get_current_bugs(api_key=''):
+    return get_bugs(
+        "&priority=P1" +
+        "&o1=notequals&v1=RESOLVED&f1=bug_status" +
+        "&api_key=" + api_key
+    )
 
-def get_recently_active_bugs(start_date):
+def get_recently_active_bugs(start_date, api_key=''):
     return get_bugs(
         "&emailcc1=1" + 
-        "&last_change_time={start_date}".format(start_date=start_date)
+        "&last_change_time=" + start_date +
+        "&api_key=" + api_key
     )
 
 def get_start_day(today = date.today()):
